@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Exceptions in cucumber hooks must result in failed scenario execution" skipped="1" tests="3" time="0.09" timestamp="2017-03-88 04:36:28"><testcase name="Execute some hook before scenario"><skipped/></testcase><testcase name="Execute some hook before scenario outline"/></testsuite>
