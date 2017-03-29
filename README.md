@@ -39,8 +39,7 @@ src
    (i.e. some DataAccessException during some setup/cleanup step performed by Spring's JdbcTemplate) 
 
 
-
-### Actual behavior
+## Actual behavior
 
 Cucumber reports:
 
@@ -73,10 +72,14 @@ But the Serenity Report claims:
 | 1 passed | 1 ignored | 
 ```
 
-### Expected behavior
+## Expected behavior
 
 * Serenity must not report any of the (actually ignored) scenarios as passed
 * Serenity must not treat exceptions in @Before hooks differently in "Scenario Outlines" and "Scenario"s
 * Steps should be reported as Ignored
 * Scenarios should be reported as failed (as seen in the Cucumber output)
 
+
+## References
+
+ * https://github.com/serenity-bdd/serenity-cucumber/issues/80
