@@ -13,7 +13,7 @@ $ mvn clean install
 ```
 
 Note that you don't need to build the project if you just want to see the results. I've included all artifacts from
- the generated target  directory in this repository. Please have a look at [output/site/serenity/index.html](https://raw.githubusercontent.com/datentyp/bugs-cucumber-hooks-and-serenity-report/master/output/site/serenity/index.html).
+ the generated target  directory in this repository. Please have a look at [output/site/serenity/index.html](https://rawgit.com/datentyp/bugs-cucumber-hooks-and-serenity-report/master/output/site/serenity/index.html).
 
 ## Project Overview 
 
