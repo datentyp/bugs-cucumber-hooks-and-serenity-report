@@ -41,7 +41,7 @@ src
 
 ## Actual behavior
 
-Cucumber reports:
+Cucumber correctly reports:
 
 ```
 Failed scenarios:

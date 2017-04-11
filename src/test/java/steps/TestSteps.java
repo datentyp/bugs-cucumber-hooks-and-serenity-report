@@ -5,7 +5,7 @@ import cucumber.api.java8.En;
 public class TestSteps implements En {
 
     public TestSteps() {
-        Given("(.*) scenario(s)? with some before hook", (String number) -> {
+        Given("(.*) scenario[s]? with some before hook", (String number) -> {
             System.out.println("Executing: Given step...");
         });
 
