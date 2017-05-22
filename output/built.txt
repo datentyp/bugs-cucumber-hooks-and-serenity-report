@@ -1,4 +1,4 @@
-/usr/local/latest/jdk/bin/java -Dmaven.multiModuleProjectDirectory=/home/wk/tmp/bugs-cucumber-hooks-and-serenity-report -Dmaven.home=/usr/local/idea-IU-171.2014.21/plugins/maven/lib/maven3 -Dclassworlds.conf=/usr/local/idea-IU-171.2014.21/plugins/maven/lib/maven3/bin/m2.conf -javaagent:/usr/local/idea-IU-171.2014.21/lib/idea_rt.jar=41431:/usr/local/idea-IU-171.2014.21/bin -Dfile.encoding=UTF-8 -classpath /usr/local/idea-IU-171.2014.21/plugins/maven/lib/maven3/boot/plexus-classworlds-2.5.2.jar org.codehaus.classworlds.Launcher -Didea.version=2017.1.1 clean install
+/usr/local/latest/jdk/bin/java -Dmaven.multiModuleProjectDirectory=/mnt/data/Github.com/bugs-cucumber-hooks-and-serenity-report -Dmaven.home=/usr/local/idea-IU-172.1909.2/plugins/maven/lib/maven3 -Dclassworlds.conf=/usr/local/idea-IU-172.1909.2/plugins/maven/lib/maven3/bin/m2.conf -javaagent:/usr/local/idea-IU-172.1909.2/lib/idea_rt.jar=41181:/usr/local/idea-IU-172.1909.2/bin -Dfile.encoding=UTF-8 -classpath /usr/local/idea-IU-172.1909.2/plugins/maven/lib/maven3/boot/plexus-classworlds-2.5.2.jar org.codehaus.classworlds.Launcher -Didea.version=2017.2 clean install
 [INFO] Scanning for projects...
 [INFO]
 [INFO] ------------------------------------------------------------------------
@@ -6,11 +6,10 @@
 [INFO] ------------------------------------------------------------------------
 [INFO]
 [INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ cucumber-hooks-and-serenity-report ---
-[INFO] Deleting /home/wk/tmp/bugs-cucumber-hooks-and-serenity-report/target
 [INFO]
 [INFO] --- maven-resources-plugin:2.7:resources (default-resources) @ cucumber-hooks-and-serenity-report ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /home/wk/tmp/bugs-cucumber-hooks-and-serenity-report/src/main/resources
+[INFO] skip non existing resourceDirectory /mnt/data/Github.com/bugs-cucumber-hooks-and-serenity-report/src/main/resources
 [INFO]
 [INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ cucumber-hooks-and-serenity-report ---
 [INFO] No sources to compile
@@ -21,10 +20,10 @@
 [INFO]
 [INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ cucumber-hooks-and-serenity-report ---
 [INFO] Changes detected - recompiling the module!
-[INFO] Compiling 3 source files to /home/wk/tmp/bugs-cucumber-hooks-and-serenity-report/target/test-classes
+[INFO] Compiling 3 source files to /mnt/data/Github.com/bugs-cucumber-hooks-and-serenity-report/target/test-classes
 [INFO]
 [INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ cucumber-hooks-and-serenity-report ---
-[INFO] Surefire report directory: /home/wk/tmp/bugs-cucumber-hooks-and-serenity-report/target/surefire-reports
+[INFO] Surefire report directory: /mnt/data/Github.com/bugs-cucumber-hooks-and-serenity-report/target/surefire-reports
 
 -------------------------------------------------------
  T E S T S
@@ -37,7 +36,7 @@ Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
 [INFO]
 [INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ cucumber-hooks-and-serenity-report ---
 [WARNING] JAR will be empty - no content was marked for inclusion!
-[INFO] Building jar: /home/wk/tmp/bugs-cucumber-hooks-and-serenity-report/target/cucumber-hooks-and-serenity-report-1.0-SNAPSHOT.jar
+[INFO] Building jar: /mnt/data/Github.com/bugs-cucumber-hooks-and-serenity-report/target/cucumber-hooks-and-serenity-report-1.0-SNAPSHOT.jar
 [INFO]
 [INFO] --- maven-failsafe-plugin:2.19.1:integration-test (default) @ cucumber-hooks-and-serenity-report ---
 
@@ -48,6 +47,7 @@ Running runner.RunCukesTest
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Setting runtime options in createRuntime()
 @Bug
 Feature: Exceptions in cucumber hooks must result in failed scenario execution
 Executing @Before Hook
@@ -410,7 +410,7 @@ test.feature:19 # Scenario Outline: Execute some hook before scenario outline
 
 3 Scenarios (3 failed)
 12 Steps (12 skipped)
-0m0.002s
+0m0.003s
 
 java.lang.RuntimeException: Oops! Some exception happened during hook execution!
 	at steps.hooks.TestHooks.setup(TestHooks.java:11)
@@ -571,14 +571,14 @@ java.lang.RuntimeException: Oops! Some exception happened during hook execution!
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:242)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:121)
 
-Tests run: 15, Failures: 0, Errors: 3, Skipped: 12, Time elapsed: 1.401 sec <<< FAILURE! - in runner.RunCukesTest
-Scenario: Execute some hook before scenario  Time elapsed: 0.152 sec  <<< ERROR!
+Tests run: 15, Failures: 0, Errors: 3, Skipped: 12, Time elapsed: 1.354 sec <<< FAILURE! - in runner.RunCukesTest
+Scenario: Execute some hook before scenario  Time elapsed: 0.149 sec  <<< ERROR!
 java.lang.RuntimeException: Oops! Some exception happened during hook execution!
 
-| 1 |  Time elapsed: 0.005 sec  <<< ERROR!
+| 1 |  Time elapsed: 0.003 sec  <<< ERROR!
 java.lang.RuntimeException: Oops! Some exception happened during hook execution!
 
-| 2 |  Time elapsed: 0.002 sec  <<< ERROR!
+| 2 |  Time elapsed: 0.003 sec  <<< ERROR!
 java.lang.RuntimeException: Oops! Some exception happened during hook execution!
 
 
@@ -592,31 +592,27 @@ Tests in error:
 Tests run: 15, Failures: 0, Errors: 3, Skipped: 12
 
 [INFO]
-[INFO] --- serenity-maven-plugin:1.2.5-rc.2:aggregate (serenity-reports) @ cucumber-hooks-and-serenity-report ---
-[INFO] current_project.base.dir: /home/wk/tmp/bugs-cucumber-hooks-and-serenity-report
-Generating HTML Story Reports from /home/wk/tmp/bugs-cucumber-hooks-and-serenity-report/target/site/serenity
-Generating HTML Story Reports to /home/wk/tmp/bugs-cucumber-hooks-and-serenity-report/target/site/serenity
-Generating HTML Outcome Reports: false
+[INFO] --- serenity-maven-plugin:1.4.0:aggregate (serenity-reports) @ cucumber-hooks-and-serenity-report ---
+[INFO] current_project.base.dir: /mnt/data/Github.com/bugs-cucumber-hooks-and-serenity-report
 [INFO] Generating test results for 3 tests
-[INFO] 1 requirements loaded after 124 ms
-[INFO] 1 related requirements found after 124 ms
+[INFO] 1 requirements loaded after 121 ms
+[INFO] 1 related requirements found after 121 ms
 [INFO] Generating test outcome reports: false
-[INFO] Starting generating reports: 136 ms
+[INFO] Starting generating reports: 135 ms
 [INFO] Configured report threads: 120
-[INFO] Finished generating test results for 3 tests after 413 ms
-GENERATE CUSTOM REPORTS
+[INFO] Finished generating test results for 3 tests after 429 ms
 [INFO]
 [INFO] --- maven-failsafe-plugin:2.19.1:verify (default) @ cucumber-hooks-and-serenity-report ---
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 4.877 s
-[INFO] Finished at: 2017-04-11T09:13:18+02:00
-[INFO] Final Memory: 35M/557M
+[INFO] Total time: 5.012 s
+[INFO] Finished at: 2017-05-22T17:09:15+02:00
+[INFO] Final Memory: 37M/589M
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-failsafe-plugin:2.19.1:verify (default) on project cucumber-hooks-and-serenity-report: There are test failures.
 [ERROR]
-[ERROR] Please refer to /home/wk/tmp/bugs-cucumber-hooks-and-serenity-report/target/failsafe-reports for the individual test results.
+[ERROR] Please refer to /mnt/data/Github.com/bugs-cucumber-hooks-and-serenity-report/target/failsafe-reports for the individual test results.
 [ERROR] -> [Help 1]
 [ERROR]
 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
@@ -624,3 +620,5 @@ GENERATE CUSTOM REPORTS
 [ERROR]
 [ERROR] For more information about the errors and possible solutions, please read the following articles:
 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+Process finished with exit code 1

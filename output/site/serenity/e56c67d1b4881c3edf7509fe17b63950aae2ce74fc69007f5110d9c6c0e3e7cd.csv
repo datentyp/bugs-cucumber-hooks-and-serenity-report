@@ -1,2 +1,2 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Exceptions in cucumber hooks must result in failed scenario execution","Execute some hook before scenario outline","SUCCESS","2017-04-11T09:13:17.174+02:00","0.0","0.02"
+"Exceptions in cucumber hooks must result in failed scenario execution","Execute some hook before scenario outline","SUCCESS","2017-05-22T17:09:14.093+02:00","0.0","0.02"
