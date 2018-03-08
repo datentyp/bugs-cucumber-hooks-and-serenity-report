@@ -5,7 +5,7 @@
 The issue has been fixed in the mean time. Have a look at the
  [Github issue](https://github.com/serenity-bdd/serenity-cucumber/issues/80) for details. BTW: Kudos @ [John Ferguson Smart](https://github.com/wakaleo)!
 
-Note that this this repository no longer illustrates the problem described below as I've updated it to verify that the 
+Note that this repository no longer illustrates the problem described below as I've updated it to verify that the 
 issue actually has been fixed. If you are interested in the original behavior you'll have to check out commit 45b85594.
 
 Screnshot of fixed behavior:
