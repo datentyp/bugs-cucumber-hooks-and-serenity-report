@@ -1,4 +1,4 @@
-/usr/local/latest/jdk/bin/java -Dmaven.multiModuleProjectDirectory=/mnt/data/Github.com/bugs-cucumber-hooks-and-serenity-report -Dmaven.home=/usr/local/idea-IU-172.1909.2/plugins/maven/lib/maven3 -Dclassworlds.conf=/usr/local/idea-IU-172.1909.2/plugins/maven/lib/maven3/bin/m2.conf -javaagent:/usr/local/idea-IU-172.1909.2/lib/idea_rt.jar=41181:/usr/local/idea-IU-172.1909.2/bin -Dfile.encoding=UTF-8 -classpath /usr/local/idea-IU-172.1909.2/plugins/maven/lib/maven3/boot/plexus-classworlds-2.5.2.jar org.codehaus.classworlds.Launcher -Didea.version=2017.2 clean install
+/usr/local/latest/jdk/bin/java -Dmaven.multiModuleProjectDirectory=/home/wk/tmp/bugs-cucumber-hooks-and-serenity-report -Dmaven.home=/usr/local/idea-IU-181.3494.3/plugins/maven/lib/maven3 -Dclassworlds.conf=/usr/local/idea-IU-181.3494.3/plugins/maven/lib/maven3/bin/m2.conf -javaagent:/usr/local/idea-IU-181.3494.3/lib/idea_rt.jar=40045:/usr/local/idea-IU-181.3494.3/bin -Dfile.encoding=UTF-8 -classpath /usr/local/idea-IU-181.3494.3/plugins/maven/lib/maven3/boot/plexus-classworlds-2.5.2.jar org.codehaus.classworlds.Launcher -Didea.version=2018.1 clean install -f pom.xml
 [INFO] Scanning for projects...
 [INFO]
 [INFO] ------------------------------------------------------------------------
@@ -6,10 +6,11 @@
 [INFO] ------------------------------------------------------------------------
 [INFO]
 [INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ cucumber-hooks-and-serenity-report ---
+[INFO] Deleting /home/wk/tmp/bugs-cucumber-hooks-and-serenity-report/target
 [INFO]
 [INFO] --- maven-resources-plugin:2.7:resources (default-resources) @ cucumber-hooks-and-serenity-report ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /mnt/data/Github.com/bugs-cucumber-hooks-and-serenity-report/src/main/resources
+[INFO] skip non existing resourceDirectory /home/wk/tmp/bugs-cucumber-hooks-and-serenity-report/src/main/resources
 [INFO]
 [INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ cucumber-hooks-and-serenity-report ---
 [INFO] No sources to compile
@@ -20,10 +21,10 @@
 [INFO]
 [INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ cucumber-hooks-and-serenity-report ---
 [INFO] Changes detected - recompiling the module!
-[INFO] Compiling 3 source files to /mnt/data/Github.com/bugs-cucumber-hooks-and-serenity-report/target/test-classes
+[INFO] Compiling 3 source files to /home/wk/tmp/bugs-cucumber-hooks-and-serenity-report/target/test-classes
 [INFO]
 [INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ cucumber-hooks-and-serenity-report ---
-[INFO] Surefire report directory: /mnt/data/Github.com/bugs-cucumber-hooks-and-serenity-report/target/surefire-reports
+[INFO] Surefire report directory: /home/wk/tmp/bugs-cucumber-hooks-and-serenity-report/target/surefire-reports
 
 -------------------------------------------------------
  T E S T S
@@ -36,7 +37,7 @@ Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
 [INFO]
 [INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ cucumber-hooks-and-serenity-report ---
 [WARNING] JAR will be empty - no content was marked for inclusion!
-[INFO] Building jar: /mnt/data/Github.com/bugs-cucumber-hooks-and-serenity-report/target/cucumber-hooks-and-serenity-report-1.0-SNAPSHOT.jar
+[INFO] Building jar: /home/wk/tmp/bugs-cucumber-hooks-and-serenity-report/target/cucumber-hooks-and-serenity-report-1.0-SNAPSHOT.jar
 [INFO]
 [INFO] --- maven-failsafe-plugin:2.19.1:integration-test (default) @ cucumber-hooks-and-serenity-report ---
 
@@ -47,44 +48,46 @@ Running runner.RunCukesTest
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-Setting runtime options in createRuntime()
 @Bug
 Feature: Exceptions in cucumber hooks must result in failed scenario execution
+
+  @Bug
+  Scenario: Execute some hook before scenario       # src/test/resources/features/test.feature:4
 Executing @Before Hook
-Failure in before hook:TestHooks.setup()
-Message: java.lang.RuntimeException: Oops! Some exception happened during hook execution!
+      java.lang.RuntimeException: Oops! Some exception happened during hook execution!
 	at steps.hooks.TestHooks.setup(TestHooks.java:11)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
-	at cucumber.runtime.Utils$1.call(Utils.java:40)
+	at cucumber.runtime.Utils$1.call(Utils.java:32)
 	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
-	at cucumber.runtime.Utils.invoke(Utils.java:34)
+	at cucumber.runtime.Utils.invoke(Utils.java:26)
 	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
-	at cucumber.runtime.Runtime.runHookIfTagsMatch(Runtime.java:224)
-	at cucumber.runtime.Runtime.runHooks(Runtime.java:212)
-	at cucumber.runtime.Runtime.runBeforeHooks(Runtime.java:202)
-	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:40)
-	at cucumber.runtime.junit.ExecutionUnitRunner.run(ExecutionUnitRunner.java:102)
-	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:63)
-	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:18)
+	at cucumber.runtime.HookDefinitionMatch.runStep(HookDefinitionMatch.java:17)
+	at cucumber.runner.UnskipableStep.executeStep(UnskipableStep.java:22)
+	at cucumber.api.TestStep.run(TestStep.java:83)
+	at cucumber.api.TestCase.run(TestCase.java:58)
+	at cucumber.runner.Runner.runPickle(Runner.java:80)
+	at cucumber.runtime.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:140)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:68)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:23)
 	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
 	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
 	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
 	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
 	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
 	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:70)
-	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:95)
-	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:38)
+	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:73)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:117)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:55)
 	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
 	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
 	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
 	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
 	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at cucumber.api.junit.Cucumber$1.evaluate(Cucumber.java:126)
 	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.api.junit.Cucumber.run(Cucumber.java:100)
 	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:367)
 	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:274)
 	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
@@ -93,324 +96,127 @@ Message: java.lang.RuntimeException: Oops! Some exception happened during hook e
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:242)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:121)
 
-      java.lang.RuntimeException: Oops! Some exception happened during hook execution!
-      	at steps.hooks.TestHooks.setup(TestHooks.java:11)
-      	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-      	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-      	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-      	at java.lang.reflect.Method.invoke(Method.java:498)
-      	at cucumber.runtime.Utils$1.call(Utils.java:40)
-      	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
-      	at cucumber.runtime.Utils.invoke(Utils.java:34)
-      	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
-      	at cucumber.runtime.Runtime.runHookIfTagsMatch(Runtime.java:224)
-      	at cucumber.runtime.Runtime.runHooks(Runtime.java:212)
-      	at cucumber.runtime.Runtime.runBeforeHooks(Runtime.java:202)
-      	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:40)
-      	at cucumber.runtime.junit.ExecutionUnitRunner.run(ExecutionUnitRunner.java:102)
-      	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:63)
-      	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:18)
-      	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-      	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-      	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-      	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-      	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-      	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-      	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:70)
-      	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:95)
-      	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:38)
-      	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-      	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-      	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-      	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-      	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-      	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-      	at cucumber.api.junit.Cucumber.run(Cucumber.java:100)
-      	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:367)
-      	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:274)
-      	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
-      	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:161)
-      	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:290)
-      	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:242)
-      	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:121)
-
-
-  Scenario: Execute some hook before scenario       # test.feature:4
     Given some scenario with some before hook       # TestSteps.java:8
     When an exception happens during hook execution # TestSteps.java:12
     Then the steps should have status Ignored       # TestSteps.java:16
     But the scenario should be reported as Failing  # TestSteps.java:20
 
-  Scenario Outline: Execute some hook before scenario outline # test.feature:10
+  Scenario Outline: Execute some hook before scenario outline # src/test/resources/features/test.feature:10
     Given <number> scenarios with some before hook
     When an exception happens during hook execution
     Then the steps should have status Ignored
     But the scenario should be reported as Failing
 
     Examples:
-Executing @Before Hook
-Failure in before hook:TestHooks.setup()
-Message: java.lang.RuntimeException: Oops! Some exception happened during hook execution!
-	at steps.hooks.TestHooks.setup(TestHooks.java:11)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at cucumber.runtime.Utils$1.call(Utils.java:40)
-	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
-	at cucumber.runtime.Utils.invoke(Utils.java:34)
-	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
-	at cucumber.runtime.Runtime.runHookIfTagsMatch(Runtime.java:224)
-	at cucumber.runtime.Runtime.runHooks(Runtime.java:212)
-	at cucumber.runtime.Runtime.runBeforeHooks(Runtime.java:202)
-	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:40)
-	at cucumber.runtime.junit.ExecutionUnitRunner.run(ExecutionUnitRunner.java:102)
-	at org.junit.runners.Suite.runChild(Suite.java:128)
-	at org.junit.runners.Suite.runChild(Suite.java:27)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.runtime.junit.ExamplesRunner.run(ExamplesRunner.java:59)
-	at org.junit.runners.Suite.runChild(Suite.java:128)
-	at org.junit.runners.Suite.runChild(Suite.java:27)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.runtime.junit.ScenarioOutlineRunner.run(ScenarioOutlineRunner.java:53)
-	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:63)
-	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:18)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:70)
-	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:95)
-	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:38)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.api.junit.Cucumber.run(Cucumber.java:100)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:367)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:274)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:161)
-	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:290)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:242)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:121)
-
-      java.lang.RuntimeException: Oops! Some exception happened during hook execution!
-      	at steps.hooks.TestHooks.setup(TestHooks.java:11)
-      	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-      	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-      	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-      	at java.lang.reflect.Method.invoke(Method.java:498)
-      	at cucumber.runtime.Utils$1.call(Utils.java:40)
-      	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
-      	at cucumber.runtime.Utils.invoke(Utils.java:34)
-      	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
-      	at cucumber.runtime.Runtime.runHookIfTagsMatch(Runtime.java:224)
-      	at cucumber.runtime.Runtime.runHooks(Runtime.java:212)
-      	at cucumber.runtime.Runtime.runBeforeHooks(Runtime.java:202)
-      	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:40)
-      	at cucumber.runtime.junit.ExecutionUnitRunner.run(ExecutionUnitRunner.java:102)
-      	at org.junit.runners.Suite.runChild(Suite.java:128)
-      	at org.junit.runners.Suite.runChild(Suite.java:27)
-      	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-      	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-      	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-      	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-      	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-      	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-      	at cucumber.runtime.junit.ExamplesRunner.run(ExamplesRunner.java:59)
-      	at org.junit.runners.Suite.runChild(Suite.java:128)
-      	at org.junit.runners.Suite.runChild(Suite.java:27)
-      	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-      	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-      	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-      	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-      	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-      	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-      	at cucumber.runtime.junit.ScenarioOutlineRunner.run(ScenarioOutlineRunner.java:53)
-      	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:63)
-      	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:18)
-      	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-      	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-      	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-      	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-      	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-      	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-      	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:70)
-      	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:95)
-      	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:38)
-      	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-      	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-      	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-      	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-      	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-      	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-      	at cucumber.api.junit.Cucumber.run(Cucumber.java:100)
-      	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:367)
-      	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:274)
-      	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
-      	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:161)
-      	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:290)
-      	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:242)
-      	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:121)
-
-Executing @Before Hook
-Failure in before hook:TestHooks.setup()
-Message: java.lang.RuntimeException: Oops! Some exception happened during hook execution!
-	at steps.hooks.TestHooks.setup(TestHooks.java:11)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at cucumber.runtime.Utils$1.call(Utils.java:40)
-	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
-	at cucumber.runtime.Utils.invoke(Utils.java:34)
-	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
-	at cucumber.runtime.Runtime.runHookIfTagsMatch(Runtime.java:224)
-	at cucumber.runtime.Runtime.runHooks(Runtime.java:212)
-	at cucumber.runtime.Runtime.runBeforeHooks(Runtime.java:202)
-	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:40)
-	at cucumber.runtime.junit.ExecutionUnitRunner.run(ExecutionUnitRunner.java:102)
-	at org.junit.runners.Suite.runChild(Suite.java:128)
-	at org.junit.runners.Suite.runChild(Suite.java:27)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.runtime.junit.ExamplesRunner.run(ExamplesRunner.java:59)
-	at org.junit.runners.Suite.runChild(Suite.java:128)
-	at org.junit.runners.Suite.runChild(Suite.java:27)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.runtime.junit.ScenarioOutlineRunner.run(ScenarioOutlineRunner.java:53)
-	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:63)
-	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:18)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:70)
-	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:95)
-	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:38)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.api.junit.Cucumber.run(Cucumber.java:100)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:367)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:274)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:161)
-	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:290)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:242)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:121)
-
-      java.lang.RuntimeException: Oops! Some exception happened during hook execution!
-      	at steps.hooks.TestHooks.setup(TestHooks.java:11)
-      	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-      	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-      	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-      	at java.lang.reflect.Method.invoke(Method.java:498)
-      	at cucumber.runtime.Utils$1.call(Utils.java:40)
-      	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
-      	at cucumber.runtime.Utils.invoke(Utils.java:34)
-      	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
-      	at cucumber.runtime.Runtime.runHookIfTagsMatch(Runtime.java:224)
-      	at cucumber.runtime.Runtime.runHooks(Runtime.java:212)
-      	at cucumber.runtime.Runtime.runBeforeHooks(Runtime.java:202)
-      	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:40)
-      	at cucumber.runtime.junit.ExecutionUnitRunner.run(ExecutionUnitRunner.java:102)
-      	at org.junit.runners.Suite.runChild(Suite.java:128)
-      	at org.junit.runners.Suite.runChild(Suite.java:27)
-      	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-      	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-      	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-      	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-      	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-      	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-      	at cucumber.runtime.junit.ExamplesRunner.run(ExamplesRunner.java:59)
-      	at org.junit.runners.Suite.runChild(Suite.java:128)
-      	at org.junit.runners.Suite.runChild(Suite.java:27)
-      	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-      	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-      	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-      	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-      	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-      	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-      	at cucumber.runtime.junit.ScenarioOutlineRunner.run(ScenarioOutlineRunner.java:53)
-      	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:63)
-      	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:18)
-      	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-      	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-      	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-      	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-      	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-      	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-      	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:70)
-      	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:95)
-      	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:38)
-      	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-      	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-      	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-      	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-      	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-      	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-      	at cucumber.api.junit.Cucumber.run(Cucumber.java:100)
-      	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:367)
-      	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:274)
-      	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
-      	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:161)
-      	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:290)
-      	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:242)
-      	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:121)
-
 
   @Bug
-  Scenario Outline: Execute some hook before scenario outline # test.feature:18
+  Scenario Outline: Execute some hook before scenario outline # src/test/resources/features/test.feature:18
+Executing @Before Hook
+      java.lang.RuntimeException: Oops! Some exception happened during hook execution!
+	at steps.hooks.TestHooks.setup(TestHooks.java:11)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at cucumber.runtime.Utils$1.call(Utils.java:32)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:26)
+	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
+	at cucumber.runtime.HookDefinitionMatch.runStep(HookDefinitionMatch.java:17)
+	at cucumber.runner.UnskipableStep.executeStep(UnskipableStep.java:22)
+	at cucumber.api.TestStep.run(TestStep.java:83)
+	at cucumber.api.TestCase.run(TestCase.java:58)
+	at cucumber.runner.Runner.runPickle(Runner.java:80)
+	at cucumber.runtime.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:140)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:68)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:23)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:73)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:117)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:55)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at cucumber.api.junit.Cucumber$1.evaluate(Cucumber.java:126)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:367)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:274)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:161)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:290)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:242)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:121)
+
     Given 1 scenarios with some before hook                   # TestSteps.java:8
     When an exception happens during hook execution           # TestSteps.java:12
     Then the steps should have status Ignored                 # TestSteps.java:16
     But the scenario should be reported as Failing            # TestSteps.java:20
 
   @Bug
-  Scenario Outline: Execute some hook before scenario outline # test.feature:19
+  Scenario Outline: Execute some hook before scenario outline # src/test/resources/features/test.feature:19
+Executing @Before Hook
+      java.lang.RuntimeException: Oops! Some exception happened during hook execution!
+	at steps.hooks.TestHooks.setup(TestHooks.java:11)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at cucumber.runtime.Utils$1.call(Utils.java:32)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:26)
+	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
+	at cucumber.runtime.HookDefinitionMatch.runStep(HookDefinitionMatch.java:17)
+	at cucumber.runner.UnskipableStep.executeStep(UnskipableStep.java:22)
+	at cucumber.api.TestStep.run(TestStep.java:83)
+	at cucumber.api.TestCase.run(TestCase.java:58)
+	at cucumber.runner.Runner.runPickle(Runner.java:80)
+	at cucumber.runtime.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:140)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:68)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:23)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:73)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:117)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:55)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at cucumber.api.junit.Cucumber$1.evaluate(Cucumber.java:126)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:367)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:274)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:161)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:290)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:242)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:121)
+
     Given 2 scenarios with some before hook                   # TestSteps.java:8
     When an exception happens during hook execution           # TestSteps.java:12
     Then the steps should have status Ignored                 # TestSteps.java:16
     But the scenario should be reported as Failing            # TestSteps.java:20
 
 Failed scenarios:
-test.feature:4 # Scenario: Execute some hook before scenario
-test.feature:18 # Scenario Outline: Execute some hook before scenario outline
-test.feature:19 # Scenario Outline: Execute some hook before scenario outline
+src/test/resources/features/test.feature:4 # Execute some hook before scenario
+src/test/resources/features/test.feature:18 # Execute some hook before scenario outline
+src/test/resources/features/test.feature:19 # Execute some hook before scenario outline
 
 3 Scenarios (3 failed)
 12 Steps (12 skipped)
-0m0.003s
+0m0.962s
 
 java.lang.RuntimeException: Oops! Some exception happened during hook execution!
 	at steps.hooks.TestHooks.setup(TestHooks.java:11)
@@ -418,33 +224,34 @@ java.lang.RuntimeException: Oops! Some exception happened during hook execution!
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
-	at cucumber.runtime.Utils$1.call(Utils.java:40)
+	at cucumber.runtime.Utils$1.call(Utils.java:32)
 	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
-	at cucumber.runtime.Utils.invoke(Utils.java:34)
+	at cucumber.runtime.Utils.invoke(Utils.java:26)
 	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
-	at cucumber.runtime.Runtime.runHookIfTagsMatch(Runtime.java:224)
-	at cucumber.runtime.Runtime.runHooks(Runtime.java:212)
-	at cucumber.runtime.Runtime.runBeforeHooks(Runtime.java:202)
-	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:40)
-	at cucumber.runtime.junit.ExecutionUnitRunner.run(ExecutionUnitRunner.java:102)
-	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:63)
-	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:18)
+	at cucumber.runtime.HookDefinitionMatch.runStep(HookDefinitionMatch.java:17)
+	at cucumber.runner.UnskipableStep.executeStep(UnskipableStep.java:22)
+	at cucumber.api.TestStep.run(TestStep.java:83)
+	at cucumber.api.TestCase.run(TestCase.java:58)
+	at cucumber.runner.Runner.runPickle(Runner.java:80)
+	at cucumber.runtime.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:140)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:68)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:23)
 	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
 	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
 	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
 	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
 	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
 	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:70)
-	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:95)
-	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:38)
+	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:73)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:117)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:55)
 	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
 	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
 	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
 	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
 	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at cucumber.api.junit.Cucumber$1.evaluate(Cucumber.java:126)
 	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.api.junit.Cucumber.run(Cucumber.java:100)
 	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:367)
 	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:274)
 	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
@@ -459,51 +266,34 @@ java.lang.RuntimeException: Oops! Some exception happened during hook execution!
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
-	at cucumber.runtime.Utils$1.call(Utils.java:40)
+	at cucumber.runtime.Utils$1.call(Utils.java:32)
 	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
-	at cucumber.runtime.Utils.invoke(Utils.java:34)
+	at cucumber.runtime.Utils.invoke(Utils.java:26)
 	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
-	at cucumber.runtime.Runtime.runHookIfTagsMatch(Runtime.java:224)
-	at cucumber.runtime.Runtime.runHooks(Runtime.java:212)
-	at cucumber.runtime.Runtime.runBeforeHooks(Runtime.java:202)
-	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:40)
-	at cucumber.runtime.junit.ExecutionUnitRunner.run(ExecutionUnitRunner.java:102)
-	at org.junit.runners.Suite.runChild(Suite.java:128)
-	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at cucumber.runtime.HookDefinitionMatch.runStep(HookDefinitionMatch.java:17)
+	at cucumber.runner.UnskipableStep.executeStep(UnskipableStep.java:22)
+	at cucumber.api.TestStep.run(TestStep.java:83)
+	at cucumber.api.TestCase.run(TestCase.java:58)
+	at cucumber.runner.Runner.runPickle(Runner.java:80)
+	at cucumber.runtime.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:140)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:68)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:23)
 	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
 	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
 	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
 	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
 	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
 	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.runtime.junit.ExamplesRunner.run(ExamplesRunner.java:59)
-	at org.junit.runners.Suite.runChild(Suite.java:128)
-	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:73)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:117)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:55)
 	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
 	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
 	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
 	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
 	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at cucumber.api.junit.Cucumber$1.evaluate(Cucumber.java:126)
 	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.runtime.junit.ScenarioOutlineRunner.run(ScenarioOutlineRunner.java:53)
-	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:63)
-	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:18)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:70)
-	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:95)
-	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:38)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.api.junit.Cucumber.run(Cucumber.java:100)
 	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:367)
 	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:274)
 	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
@@ -518,51 +308,34 @@ java.lang.RuntimeException: Oops! Some exception happened during hook execution!
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
-	at cucumber.runtime.Utils$1.call(Utils.java:40)
+	at cucumber.runtime.Utils$1.call(Utils.java:32)
 	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
-	at cucumber.runtime.Utils.invoke(Utils.java:34)
+	at cucumber.runtime.Utils.invoke(Utils.java:26)
 	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
-	at cucumber.runtime.Runtime.runHookIfTagsMatch(Runtime.java:224)
-	at cucumber.runtime.Runtime.runHooks(Runtime.java:212)
-	at cucumber.runtime.Runtime.runBeforeHooks(Runtime.java:202)
-	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:40)
-	at cucumber.runtime.junit.ExecutionUnitRunner.run(ExecutionUnitRunner.java:102)
-	at org.junit.runners.Suite.runChild(Suite.java:128)
-	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at cucumber.runtime.HookDefinitionMatch.runStep(HookDefinitionMatch.java:17)
+	at cucumber.runner.UnskipableStep.executeStep(UnskipableStep.java:22)
+	at cucumber.api.TestStep.run(TestStep.java:83)
+	at cucumber.api.TestCase.run(TestCase.java:58)
+	at cucumber.runner.Runner.runPickle(Runner.java:80)
+	at cucumber.runtime.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:140)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:68)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:23)
 	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
 	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
 	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
 	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
 	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
 	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.runtime.junit.ExamplesRunner.run(ExamplesRunner.java:59)
-	at org.junit.runners.Suite.runChild(Suite.java:128)
-	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:73)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:117)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:55)
 	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
 	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
 	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
 	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
 	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at cucumber.api.junit.Cucumber$1.evaluate(Cucumber.java:126)
 	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.runtime.junit.ScenarioOutlineRunner.run(ScenarioOutlineRunner.java:53)
-	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:63)
-	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:18)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:70)
-	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:95)
-	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:38)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at cucumber.api.junit.Cucumber.run(Cucumber.java:100)
 	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:367)
 	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:274)
 	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238)
@@ -571,48 +344,50 @@ java.lang.RuntimeException: Oops! Some exception happened during hook execution!
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:242)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:121)
 
-Tests run: 15, Failures: 0, Errors: 3, Skipped: 12, Time elapsed: 1.354 sec <<< FAILURE! - in runner.RunCukesTest
-Scenario: Execute some hook before scenario  Time elapsed: 0.149 sec  <<< ERROR!
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 1.53 sec <<< FAILURE! - in runner.RunCukesTest
+Execute some hook before scenario(Exceptions in cucumber hooks must result in failed scenario execution)  Time elapsed: 0.021 sec  <<< ERROR!
 java.lang.RuntimeException: Oops! Some exception happened during hook execution!
 
-| 1 |  Time elapsed: 0.003 sec  <<< ERROR!
+Execute some hook before scenario outline(Exceptions in cucumber hooks must result in failed scenario execution)  Time elapsed: 0.058 sec  <<< ERROR!
 java.lang.RuntimeException: Oops! Some exception happened during hook execution!
 
-| 2 |  Time elapsed: 0.003 sec  <<< ERROR!
+Execute some hook before scenario outline(Exceptions in cucumber hooks must result in failed scenario execution)  Time elapsed: 0.611 sec  <<< ERROR!
 java.lang.RuntimeException: Oops! Some exception happened during hook execution!
 
 
 Results :
 
 Tests in error:
-  Oops! Some exception happened during hook execution!
-  Oops! Some exception happened during hook execution!
+Exceptions in cucumber hooks must result in failed scenario execution.Execute some hook before scenario outline(Exceptions in cucumber hooks must result in failed scenario execution)
+  Run 1: Oops! Some exception happened during hook execution!
+  Run 2: Oops! Some exception happened during hook execution!
+
   Oops! Some exception happened during hook execution!
 
-Tests run: 15, Failures: 0, Errors: 3, Skipped: 12
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0
 
 [INFO]
-[INFO] --- serenity-maven-plugin:1.4.0:aggregate (serenity-reports) @ cucumber-hooks-and-serenity-report ---
-[INFO] current_project.base.dir: /mnt/data/Github.com/bugs-cucumber-hooks-and-serenity-report
+[INFO] --- serenity-maven-plugin:1.9.2:aggregate (serenity-reports) @ cucumber-hooks-and-serenity-report ---
+[INFO] current_project.base.dir: /home/wk/tmp/bugs-cucumber-hooks-and-serenity-report
 [INFO] Generating test results for 3 tests
-[INFO] 1 requirements loaded after 121 ms
-[INFO] 1 related requirements found after 121 ms
+[INFO] 1 requirements loaded after 96 ms
+[INFO] 1 related requirements found after 96 ms
 [INFO] Generating test outcome reports: false
-[INFO] Starting generating reports: 135 ms
-[INFO] Configured report threads: 120
-[INFO] Finished generating test results for 3 tests after 429 ms
+[INFO] Starting generating reports: 117 ms
+[INFO] Configured report threads: 60
+[INFO] Test results for 3 tests generated in 532 ms
 [INFO]
 [INFO] --- maven-failsafe-plugin:2.19.1:verify (default) @ cucumber-hooks-and-serenity-report ---
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 5.012 s
-[INFO] Finished at: 2017-05-22T17:09:15+02:00
-[INFO] Final Memory: 37M/589M
+[INFO] Total time: 5.399 s
+[INFO] Finished at: 2018-03-08T16:08:02+01:00
+[INFO] Final Memory: 44M/664M
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-failsafe-plugin:2.19.1:verify (default) on project cucumber-hooks-and-serenity-report: There are test failures.
 [ERROR]
-[ERROR] Please refer to /mnt/data/Github.com/bugs-cucumber-hooks-and-serenity-report/target/failsafe-reports for the individual test results.
+[ERROR] Please refer to /home/wk/tmp/bugs-cucumber-hooks-and-serenity-report/target/failsafe-reports for the individual test results.
 [ERROR] -> [Help 1]
 [ERROR]
 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.

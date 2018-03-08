@@ -69,6 +69,17 @@ body {
     background-color:#999999;*/
 }
 
+td.tag-title {
+    /* essential */
+
+    text-overflow: ellipsis;
+    width: 17.5em;
+    max-width: 17.5em;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
 .story-coverage
 {
     border-left: 1px solid #88a717; padding-left: 10px
@@ -116,7 +127,7 @@ body {
 {
     min-width:1007px;
     max-width:1007px;
-    height:30px;
+    height:3.5em;
     padding: 0px;
     padding-left: 10px;
     float:left;
@@ -204,7 +215,7 @@ body {
     margin-left: 40px;
     padding-top: 16px;
     font-family:euphemia, verdana, sans-serif;
-    font-size:1.5em; color: #88a717; font-style:normal;
+    font-size:1.3em; color: #88a717; font-style:normal;
     font-weight:normal; font-size-adjust:inherit;
 }
 
@@ -864,6 +875,7 @@ font-family:euphemia, verdana, sans-serif; font-size:16px; color: #88a717; font-
 
 .tag-title {
     width: 100%;
+    display: inline-block;
 }
 
 .menu {
@@ -1128,6 +1140,42 @@ h4 {
     -o-text-overflow: ellipsis;
 }
 
+.truncated-tag-title {
+    white-space: nowrap;
+    width: 25em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+.truncate-20 {
+    overflow: hidden;
+    max-width: 40ch;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+.truncate-40 {
+    overflow: hidden;
+    max-width: 40ch;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+.truncate-60 {
+    overflow: hidden;
+    max-width: 60ch;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+.truncate-80 {
+    overflow: hidden;
+    max-width: 80ch;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
 .tag-count-header {
     font-size: 0.9em;
 }
@@ -1169,6 +1217,7 @@ h4 {
 }
 
 
+
 .requirementNarrativeTitle {
     color: #0d78ae;
     font-family:euphemia, verdana, sans-serif;font-size: 15px; font-weight:normal; font-style: italic;
@@ -1183,7 +1232,7 @@ h4 {
 }
 
 .requirementNarrativeField ul,ol {
-    margin-left: 15px;
+    margin-left: 30px;
 }
 
 .custom-field-title {
@@ -1673,3 +1722,7 @@ ul.second-level-requirements  {
 
 .datagrid th:first-child { display:none; }
 .datagrid td:first-child { display:none; }
+
+.requirements-overview li {
+    margin-left: 2em;
+}

@@ -36,15 +36,15 @@
     <script class="code" type="text/javascript">$(document).ready(function () {
         var test_results_plot = $.jqplot('test_results_pie_chart', [
             [
-                ['Passing', 0.666667],
+                ['Passing', 0],
                 
                 ['Pending', 0],
                 
-                ['Ignored', 0.333333],
+                ['Ignored', 0],
                 
                 ['Failing', 0],
                 
-                ['Errors',  0]
+                ['Errors',  1]
             ]
         ], {
 
@@ -73,25 +73,25 @@
                 marginTop: '15px'
             },
             series: [
-                {label: '2 / 3 tests passed' },
+                {label: '0 / 3 tests passed' },
                 {label: '0 / 3 tests pending'},
-                {label: '1 / 3 tests not executed'},
+                {label: '0 / 3 tests not executed'},
                 {label: '0 / 3 tests failed'},
-                {label: '0 / 3 errors'}
+                {label: '3 / 3 errors'}
             ]
         });
 
         var weighted_test_results_plot = $.jqplot('weighted_test_results_pie_chart', [
             [
-                ['Passing', 0.714286],
+                ['Passing', 0],
                 
                 ['Pending', 0],
                 
-                ['Ignored', 0.285714],
+                ['Ignored', 0],
                 
                 ['Failing', 0],
                 
-                ['Errors', 0]
+                ['Errors', 1]
             ]
         ], {
 
@@ -121,11 +121,11 @@
                 marginTop: '15px'
             },
             series: [
-                {label: '2 / 3 tests passed (0.714286% of all test steps)' },
+                {label: '0 / 3 tests passed (0% of all test steps)' },
                 {label: '0 / 3 tests pending'},
-                {label: '1 / 3 tests not executed'},
+                {label: '0 / 3 tests not executed'},
                 {label: '0 / 3 tests failed (0% of all test steps)'},
-                {label: '0 / 3 errors (0% of all test steps)'}
+                {label: '3 / 3 errors (1% of all test steps)'}
             ]
         });
 
@@ -158,7 +158,7 @@
 <body class="results-page">
 <div id="topheader">
     <div id="topbanner">
-        <div id="logo"><a href="index.html"><img src="images/serenity-bdd-logo.png" border="0"/></a></div>
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
         <div id="projectname-banner" style="float:right">
             <span class="projectname"></span>
         </div>
@@ -189,7 +189,7 @@
             <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="fa fa-comments-o"></i> Features</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 22-05-2017 17:09</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 08-03-2018 16:08</span>
     <br style="clear:left"/>
 </div>
     <div class="clr"></div>
@@ -206,7 +206,7 @@
                     </tr>
                     <tr>
                         <td style="width: 30%">Operating System</td>
-                        <td>Linux version 4.10.0-20-generic</td>
+                        <td>Linux version 4.15.0-10-generic</td>
                     </tr>
                 </table>
 
@@ -219,7 +219,7 @@
 </div>
 <div id="beforefooter"></div>
 <div id="bottomfooter">
-    <span class="version">Serenity version 1.3.0</span>
+    <span class="version">Serenity version 1.8.1</span>
 </div>
 
 </body>

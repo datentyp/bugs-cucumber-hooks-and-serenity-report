@@ -1,13 +1,13 @@
 -------------------------------------------------------------------------------
 Test set: runner.RunCukesTest
 -------------------------------------------------------------------------------
-Tests run: 15, Failures: 0, Errors: 3, Skipped: 12, Time elapsed: 1.354 sec <<< FAILURE! - in runner.RunCukesTest
-Scenario: Execute some hook before scenario  Time elapsed: 0.149 sec  <<< ERROR!
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 1.53 sec <<< FAILURE! - in runner.RunCukesTest
+Execute some hook before scenario(Exceptions in cucumber hooks must result in failed scenario execution)  Time elapsed: 0.021 sec  <<< ERROR!
 java.lang.RuntimeException: Oops! Some exception happened during hook execution!
 
-| 1 |  Time elapsed: 0.003 sec  <<< ERROR!
+Execute some hook before scenario outline(Exceptions in cucumber hooks must result in failed scenario execution)  Time elapsed: 0.058 sec  <<< ERROR!
 java.lang.RuntimeException: Oops! Some exception happened during hook execution!
 
-| 2 |  Time elapsed: 0.003 sec  <<< ERROR!
+Execute some hook before scenario outline(Exceptions in cucumber hooks must result in failed scenario execution)  Time elapsed: 0.611 sec  <<< ERROR!
 java.lang.RuntimeException: Oops! Some exception happened during hook execution!
 

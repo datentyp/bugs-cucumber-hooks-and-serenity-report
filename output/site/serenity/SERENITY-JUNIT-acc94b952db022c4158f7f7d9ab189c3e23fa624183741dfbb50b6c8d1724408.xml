@@ -1,1 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="Exceptions in cucumber hooks must result in failed scenario execution" skipped="1" tests="3" time="0.12" timestamp="2017-05-142 05:09:13"><testcase name="Execute some hook before scenario"><skipped/></testcase><testcase name="Execute some hook before scenario outline"/></testsuite>
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="3" failures="0" name="Exceptions in cucumber hooks must result in failed scenario execution" skipped="0" tests="3" time="0.86" timestamp="2018-03-67 04:07:59"><testcase name="Execute some hook before scenario"><error message="Oops! Some exception happened during hook execution!" type="java.lang.RuntimeException">Oops! Some exception happened during hook execution!</error><system-err>Oops! Some exception happened during hook execution!
+steps.hooks.TestHooks.setup(TestHooks.java:11)
+cucumber.runner.UnskipableStep.executeStep(UnskipableStep.java:22)
+cucumber.runner.Runner.runPickle(Runner.java:80)
+</system-err></testcase><testcase name="Execute some hook before scenario outline"><error message="Oops! Some exception happened during hook execution!" type="java.lang.RuntimeException">Oops! Some exception happened during hook execution!</error><system-err>Oops! Some exception happened during hook execution!
+steps.hooks.TestHooks.setup(TestHooks.java:11)
+cucumber.runner.UnskipableStep.executeStep(UnskipableStep.java:22)
+cucumber.runner.Runner.runPickle(Runner.java:80)
+</system-err></testcase></testsuite>

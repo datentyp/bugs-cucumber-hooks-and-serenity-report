@@ -1,5 +1,15 @@
 # README
 
+## Update March, 2018
+
+The issue has been fixed in the mean time. Have a look at the
+ [Github issue](https://github.com/serenity-bdd/serenity-cucumber/issues/80) for details. BTW: Kudos @ [John Ferguson Smart](https://github.com/wakaleo)!
+
+Note that this this repository no longer illustrates the problem described below as I've updated it to verify that the 
+issue actually has been fixed. If you are interested in the original behavior you'll have to check out commit 45b85594.
+
+![Screenshot of fixed report][output/fixed-report-screenshot.jpg](https://raw.githubusercontent.com/datentyp/bugs-cucumber-hooks-and-serenity-report/master/output/fixed-report-screenshot.jpg)
+
 ## Introduction
 
 In case an exception happens during hook execution we end up with misleading/wrong results in the Serenity report.
@@ -54,18 +64,18 @@ test.feature:19 # Scenario Outline: Execute some hook before scenario outline
 0m0.002s
 ```
 
-JUnit reports:
+JUnit correctly reports:
 
 ```
 Tests run: 15, Failures: 0, Errors: 3, Skipped: 12
 ```
-Maven reports:
+Maven correctly reports:
 
 ```
 [INFO] BUILD FAILURE
 ```
 
-But the Serenity Report claims:
+But the generated Serenity test report claims:
 
 ```
 2 test scenarios (3 tests in all, including 2 rows of test data)
