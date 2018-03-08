@@ -8,7 +8,9 @@ The issue has been fixed in the mean time. Have a look at the
 Note that this this repository no longer illustrates the problem described below as I've updated it to verify that the 
 issue actually has been fixed. If you are interested in the original behavior you'll have to check out commit 45b85594.
 
-[![Screenshot of fixed report][output/fixed-report-screenshot.jpg](https://raw.githubusercontent.com/datentyp/bugs-cucumber-hooks-and-serenity-report/master/output/fixed-report-screenshot.jpg)]
+Screnshot of fixed behavior:
+
+![Screenshot of fixed report](https://raw.githubusercontent.com/datentyp/bugs-cucumber-hooks-and-serenity-report/master/output/fixed-report-screenshot.jpg)
 
 ## Introduction
 
